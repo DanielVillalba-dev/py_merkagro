@@ -9,5 +9,9 @@ repo = UserRepositoryAdapter()
 service = UserService(repo)
 @router.get("/")
 async def load_data():
-    count = service.count_users()
-    return {"cantidad usuarios: ": count}
+    count_users = service.count_users()
+    count_companys = service.count_companys()
+    return {
+        "cantidad usuario", count_users,
+        "cantidad companys", count_companys
+    }

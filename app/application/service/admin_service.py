@@ -10,6 +10,15 @@ class UserService:
         df = pd.DataFrame(users)
         return df
 
+    def get_company_dataframe(self) -> pd.DataFrame:
+        companys = self.admin_repository.get_all_companys()
+        df = pd.DataFrame(companys)
+        return df
+
     def count_users(self) -> int:
         number_columns = len(self.get_users_dataframe())
+        return number_columns
+
+    def count_companys(self) -> int:
+        number_columns = len(self.get_company_dataframe())
         return number_columns
