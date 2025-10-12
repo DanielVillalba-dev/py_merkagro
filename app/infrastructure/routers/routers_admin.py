@@ -12,7 +12,7 @@ def get_service():
 @router.get("/")
 async def load_data(service: AdminService = Depends(get_service())):
     count_users = service.count_users()
-    count_companies = service.count_companys()
+    count_companies = service.count_companies()
     return {
         "cantidad usuario": count_users,
         "cantidad companys": count_companies
