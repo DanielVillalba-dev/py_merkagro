@@ -7,6 +7,7 @@ class AdminRepository(ABC):
     def get_all_users(self) -> List[Dict[str, any]]:
         pass
 
-    #Metodo para obtener cuantos usuarios nuevos se registraron al mes
-    # def get_user_by_moth(self) -> List[Dict[str, any]]:
-    #     pass
+    #Metodo para obtener asociaciones
+    @abstractmethod
+    def get_all_association(self) -> List[Dict[str, any]]:
+        pass

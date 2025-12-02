@@ -1,3 +1,4 @@
+from typing import List, Dict
 import requests
 from app.domain.repositories.admin_repository import AdminRepository
 
@@ -21,5 +22,8 @@ class AdminRepositoryAdapter(AdminRepository):
             print(f"Error al consultar {url}: {e}")
             return []
 
-    def get_all_users(self):
-        return self.take_data("usarios/listar-usuarios")
+    def get_all_users(self) -> List[Dict[str, any]]:
+        return self.take_data("usuarios/listar-usuarios")
+
+    def get_all_association(self) -> List[Dict[str, any]]:
+        return self.take_data("asociacion/listar-asociaciones")

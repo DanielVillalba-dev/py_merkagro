@@ -1,20 +1,26 @@
 import pandas as pd
 
-from app.infrastructure.adapter.generics_methods_adapter import GenericsMethodsRepository
+from app.application.service.generics_service import GenericsService
 from app.domain.repositories.admin_repository import AdminRepository
 
 
 class AdminService:
-    def __init__(self, admin_repository: AdminRepository, generics_methods_repository: GenericsMethodsRepository):
+    def __init__(self, admin_repository: AdminRepository, generics_service: GenericsService):
         self.admin_repository = admin_repository
-        self.generics_methods_repository = generics_methods_repository
+        self.generics_service = generics_service
 
-    #Toma todos los usuarios de la base de datos y los convierte en un DataFrame
-    def get_users_dataframe(self) -> pd.DataFrame:
+    def get_users(self) -> pd.DataFrame:
         users = self.admin_repository.get_all_users()
-        return self.generics_methods_repository.to_dataframe(users)
+        return self.generics_service.to_dataframe(users)
 
-    #Devuelve el ancho del dataframe de usuarios
+    def get_associations(self) -> pd.DataFrame:
+        associations = self.admin_repository.get_all_association()
+        return self.generics_service.to_dataframe(associations)
+
     def count_users(self) -> int:
-        df_users = self.get_users_dataframe()
+        df_users = self.get_users()
         return len(df_users)
+
+    def count_associations(self) -> int:
+        df_associations = self.get_associations()
+        return len(df_associations)
