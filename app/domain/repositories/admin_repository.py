@@ -11,3 +11,8 @@ class AdminRepository(ABC):
     @abstractmethod
     def get_all_association(self) -> List[Dict[str, any]]:
         pass
+
+    #Metodo para obtener solicitudes de registro
+    @abstractmethod
+    def get_all_registration_request(self) -> List[Dict[str, any]]:
+        pass

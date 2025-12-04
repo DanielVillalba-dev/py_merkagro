@@ -27,3 +27,6 @@ class AdminRepositoryAdapter(AdminRepository):
 
     def get_all_association(self) -> List[Dict[str, any]]:
         return self.take_data("asociacion/listar-asociaciones")
+    
+    def get_all_registration_request(self) -> List[Dict[str, any]]:
+        return self.take_data("asociacion/listar-documentos")
